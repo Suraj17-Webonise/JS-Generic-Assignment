@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<div class="div">
+    <input type="number" id="input_1" placeholder="Enter First Number"><br>
+    <input type="number" id="input_2" placeholder="Enter Second Number">
+    <br>
+    <br>
+    <button onclick="result('+')">Addition</button>
+    <button onclick="result('-')">Substraction</button><br><br>
+    <div id="output"></div>
+</div>
+
+</html>
+<script>
+    const result = (operator) => {
+        let input_1 = document.getElementById("input_1").value;
+        let input_2 = document.getElementById("input_2").value;
+        let output = document.getElementById("output");
+
+        if (input_1 === '' && input_2 === '') {
+            output.innerHTML = "Enter all Fields";
+            return;
+        }
+        switch (operator) {
+            case '+': answer = Number(input_1) + Number(input_2);
+                output.innerHTML = `The sum is ${answer}`;
+                break;
+
+            case '-': answer = Number(input_1) - Number(input_2);
+                output.innerHTML = `The diffrence is ${answer}`;
+                break;
+
+            default: return;
+        }
+    }
+</script>

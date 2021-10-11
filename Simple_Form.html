@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Simple Form</title>
+
+</head>
+
+<body>
+    <form>
+        <input type="text" id="name" placeholder="Enter Your Name" required><br>
+        <span id="nameerror"></span><br>
+        <input type="email" id="email" placeholder="Enter Your Email Id" required><br>
+        <span id="emailerror"></span><br>
+        <button type="submit">Submit</button>
+    </form>
+    <botton onclick="showUsers()">Show Users</botton>
+    <div id="userlist"></div>
+
+</body>
+
+</html>
+
+<script>
+    var userlist = [];
+    const form = document.forms[0];
+
+    validations = (name, email) => {
+        const mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        const letters = /^[A-Za-z]+$/;
+
+        document.getElementById("emailerror").innerHTML = "";
+        document.getElementById("nameerror").innerHTML = "";
+
+        let is_valid = true;
+
+        if (!email.value.match(mailFormat)) {
+            document.getElementById("emailerror").innerHTML = "Enter an Valid Email Id";
+            is_valid = false;
+        }
+        if (!name.value.match(letters)) {
+            document.getElementById("nameerror").innerHTML = "Enter Valid Name";
+            is_valid = false;
+        }
+        return is_valid;
+    }
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const { name, email } = this.elements;
+
+        //check validation
+        if (validations(name, email)) {
+            let new_obj = {
+                "name": name.value,
+                "email": email.value,
+                "time": new Date()
+            };
+            userlist.push(new_obj);
+        }
+
+    });
+
+    //showing list
+
+    showUsers = () => {
+        const length = userlist.length;
+        let table = `<table border="1">
+        <tr>
+            <th> Name </th>
+            <th> Email</th>
+            <th> Time</th>
+            </tr>`;
+
+        if (length > 0) {
+            for (let i = 0; i < length; i++) {
+                table += `<tr>
+                        <td>${userlist[i].name}</td>
+                        <td>${userlist[i].email}</td>
+                        <td>${userlist[i].time}</td>
+                        </tr>`
+            }
+
+        } else {
+            table += `<tr>
+                    <td colspan="3">Record not Found!!!</td>
+                    </tr>`
+        }
+        table += `</table>`;
+        document.getElementById("userlist").innerHTML = table;
+    }
+</script>
