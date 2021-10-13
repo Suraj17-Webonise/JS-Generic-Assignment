@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Tabs Recursion</title>
+</head>
+
+<body>
+    <button onclick="openTab()">open tab</button>
+    <button onclick="closeTab()">close tab</button>
+
+
+</body>
+
+</html>
+<script>
+    let windows = [];
+    openTab = () => {
+        for (let i = 0; i < 8; i++) {
+            windows[i] = window.open('http://www.google.com', '_blank');
+        }
+
+        const length = windows.length;
+        let i = 0;
+
+        setInterval(() => {
+            if (windows.length > i) {
+                windows[i].close();
+                windows[i++];
+            }
+        }, 2000)
+    }
+    
+    closeTab = () => {
+        const length = windows.length;
+        for (i = 0; i < length; i++) {
+            windows[i].close();
+        }
+    }
+</script>
