@@ -17,9 +17,9 @@
 
 </html>
 <script>
-    let window = [];
+    let windows = [];
     openTab = () => {
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < 8; i++) {
             windows[i] = window.open('http://www.google.com', '_blank');
         }
 
@@ -33,6 +33,7 @@
             }
         }, 2000)
     }
+    
     closeTab = () => {
         const length = windows.length;
         for (i = 0; i < length; i++) {

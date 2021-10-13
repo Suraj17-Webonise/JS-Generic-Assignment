@@ -1,8 +1,8 @@
 <script>
-    const input = prompt("Enter the data");
+    const input = prompt('Enter the data');
     const array = input.split(',').map(Number);
 
-    var counts = {};
+    let counts = {};
 
     array.forEach((x) => {
         counts[x] = (counts[x] || 0) + 1;

@@ -32,31 +32,31 @@
         const mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         const letters = /^[A-Za-z]+$/;
 
-        document.getElementById("emailerror").innerHTML = "";
-        document.getElementById("nameerror").innerHTML = "";
+        document.getElementById('emailerror').innerHTML = '';
+        document.getElementById('nameerror').innerHTML = '';
 
         let is_valid = true;
 
         if (!email.value.match(mailFormat)) {
-            document.getElementById("emailerror").innerHTML = "Enter an Valid Email Id";
+            document.getElementById('emailerror').innerHTML = 'Enter an Valid Email Id';
             is_valid = false;
         }
         if (!name.value.match(letters)) {
-            document.getElementById("nameerror").innerHTML = "Enter Valid Name";
+            document.getElementById('nameerror').innerHTML = 'Enter Valid Name';
             is_valid = false;
         }
         return is_valid;
     }
-    form.addEventListener("submit", function (event) {
+    form.addEventListener('submit', function (event) {
         event.preventDefault();
         const { name, email } = this.elements;
 
         //check validation
         if (validations(name, email)) {
             let new_obj = {
-                "name": name.value,
-                "email": email.value,
-                "time": new Date()
+                'name': name.value,
+                'email': email.value,
+                'time': new Date()
             };
             userlist.push(new_obj);
         }

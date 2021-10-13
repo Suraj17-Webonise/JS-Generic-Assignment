@@ -20,14 +20,15 @@
 </html>
 <script>
     const result = (operator) => {
-        let input_1 = document.getElementById("input_1").value;
-        let input_2 = document.getElementById("input_2").value;
-        let output = document.getElementById("output");
+        const input_1 = document.getElementById('input_1').value;
+        const input_2 = document.getElementById('input_2').value;
+        const output = document.getElementById('output');
 
         if (input_1 === '' && input_2 === '') {
             output.innerHTML = "Enter all Fields";
             return;
         }
+
         switch (operator) {
             case '+': answer = Number(input_1) + Number(input_2);
                 output.innerHTML = `The sum is ${answer}`;
